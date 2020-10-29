@@ -17,7 +17,8 @@ using namespace std;
 //Variables globales
 #define longitud 4
 #define longitudCedula 8
-int key, j, k = 1, saldoInicial = 1000, moneyIngreso, moneyRetiro, i, valorIngreso, valorRetiro;
+int key, j, l = 1, k = 1, m = 1, dineroIngreso, dineroRetiro, dineroTotal, i, valorIngreso, valorRetiro;
+bool bloqueoIngreso = false, bloqueoRetiro = false;
 char caracter, password[longitud];
 
 
@@ -235,6 +236,9 @@ void preguntaCambioClave(){
 
 //Inicio Funcion menuOpciones()
 void menuOpciones(){
+	l = 1;
+	k = 1;
+	
 	int opcionMenu;
 	
 	cout<<"\n\n\t\t\t//Menu de opciones//"<<endl;
@@ -252,15 +256,38 @@ void menuOpciones(){
 	
 	
 	switch(opcionMenu){
-		case 1: clearIngresar(); ingresarDinero();
-		case 2: clearRetirar(); retirarDinero();
+		case 1: 
+		if(bloqueoIngreso == true){
+			clear();
+			cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		
+		} else{
+			clearIngresar(); 
+			ingresarDinero();
+		}
+		
+		case 2: 
+		if(bloqueoRetiro == true){
+			clear();
+			cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		
+		} else{
+			clearRetirar(); 
+			retirarDinero();
+		}
 		//case 3: transferencias(); break;
 		//case 4: verSaldo(); break;
 		//case 5: verMisDatos(); break;
 		//case 6: modificarNombre(); break;
 		//case 7: cambiarClave(); break;
 		//case 8: salir(); break;
-		default: cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."; menuOpciones();
+		default: cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."; clear(); menuOpciones();
 	}
 }
 //Final Funcion menuOpciones()
@@ -319,17 +346,17 @@ void cambioClave(){
 			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
 			k++;
 			cambioClave(); 
+		}
+		
+		if(k > 2){
+			cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el cambio de su clave\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		}
 			
-			if(k > 2){
-				cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
-				<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el cambio de su clave\n"
-				<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-				cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-				menuOpciones();
-			}
-		}	
 	} else{
-		//key = atoi(password);
 		clear();
 		seeKey();
 	}
@@ -408,19 +435,19 @@ void ingresarDinero(){
 		ingresarDinero();
 	}
 	
-	moneyIngreso = atoi(ingreso.c_str()); //Convertir un string a int
+	dineroIngreso = atoi(ingreso.c_str()); //Convertir un string a int
 	
-	if(moneyIngreso > 1000000){
+	if(dineroIngreso > 1000000){
 		clearIngresar();
 		cout<<"\n\n\t\tERROR // Lo maximo permitido para ingresar es $1.000.000."<<endl;
 		ingresarDinero();
 	
-	} else if (moneyIngreso > 0 && moneyIngreso < 20000){
+	} else if (dineroIngreso > 0 && dineroIngreso < 20000){
 		clearIngresar();
 		cout<<"\n\n\t\tERROR // Lo minimo permitido para ingresar es $20.000."<<endl;
 		ingresarDinero();
 			
-	} else if(moneyIngreso > 19999 && moneyIngreso < 1000001){
+	} else if(dineroIngreso > 19999 && dineroIngreso < 1000001){
 		clearIngresar();
 		validarClaveIngresoDinero();
 		
@@ -439,7 +466,7 @@ void ingresarDinero(){
 void validarClaveIngresoDinero(){
 	
 	validarClaveGlobal();
-	
+
 	if(j == 0){
 		clearIngresar();
 		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
@@ -447,49 +474,53 @@ void validarClaveIngresoDinero(){
 	}
 	
 	if(j < longitud){
-		
-		while(k < 3){
+	
+		while(l < 3){
 			clearIngresar();
 			cout<<"\n\n\t\tERROR // La clave no es valida."
-			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
-			k++;
-			validarClaveIngresoDinero(); 
-			
-			if(k > 2){
-				clear();
-				cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
-				<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
-				<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-				cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-				menuOpciones();
-			}
-		}	
+			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
+			l++;
+			validarClaveIngresoDinero();
+		}
+		
+		if(l > 2){
+			clear();
+			bloqueoIngreso = true;
+			cout<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		}
 	} else {
 		
 		valorIngreso = atoi(password);
 		
 		if(valorIngreso == key){
 			clear();
+			dineroTotal += dineroIngreso;
 			cout<<"\n\n\t\t*** Ingreso de dinero exitoso. ***"<<endl;
+			cout<<"\n\n\t\tAcabo de ingresar: $"<<dineroTotal;
 			cout<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
 			menuOpciones();
 		}
 		
-		while(k < 3){
+		while(l < 3){
 			clearIngresar();
 			cout<<"\n\n\t\tERROR // La clave no es valida."
-			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
-			k++;
+			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
+			l++;
 			validarClaveIngresoDinero();
-			
-			if(k > 2){
-				clear();
-				cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
-				<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
-				<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-				cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-				menuOpciones();
-			}
+		}
+		
+		if(l > 2){
+			clear();
+			bloqueoIngreso = true;
+			cout<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
 		}
 	}
 }
@@ -512,14 +543,14 @@ void retirarDinero(){
 		retirarDinero();
 	}
 	
-	moneyRetiro = atoi(retiro.c_str()); //Convertir un string a int
+	dineroRetiro = atoi(retiro.c_str()); //Convertir un string a int
 	
-	if(moneyRetiro > moneyIngreso){
+	if(dineroRetiro > dineroTotal){
 		clearRetirar();
 		cout<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
 		retirarDinero();
 	
-	} else if (moneyRetiro > 0 && moneyRetiro <= moneyIngreso){
+	} else if (dineroRetiro >= 0 && dineroRetiro <= dineroTotal){
 		clearRetirar();	
 		validarClaveRetiroDinero();	
 			
@@ -542,7 +573,7 @@ void validarClaveRetiroDinero(){
 	if(j == 0){
 		clearIngresar();
 		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
-		validarClaveIngresoDinero();
+		validarClaveRetiroDinero();
 	}
 	
 	if(j < longitud){
@@ -552,24 +583,28 @@ void validarClaveRetiroDinero(){
 			cout<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
 			k++;
-			validarClaveIngresoDinero(); 
+			validarClaveRetiroDinero(); 
+		}
+		
+		if(k > 2){
+			clear();
+			bloqueoRetiro = true;
+			cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		}
 			
-			if(k > 2){
-				clear();
-				cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
-				<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
-				<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-				cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-				menuOpciones();
-			}
-		}	
 	} else {
 		
 		valorRetiro = atoi(password);
 		
 		if(valorRetiro == key){
 			clear();
+			dineroTotal -= dineroRetiro;
 			cout<<"\n\n\t\t*** Retiro de dinero exitoso. ***"<<endl;
+			cout<<"\n\n\t\tSaldo en cuenta: $"<<dineroTotal;
 			cout<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
 			menuOpciones();
 		}
@@ -579,16 +614,18 @@ void validarClaveRetiroDinero(){
 			cout<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
 			k++;
-			validarClaveIngresoDinero(); 
-			
-			if(k > 2){
-				clear();
-				cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
-				<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
-				<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-				cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-				menuOpciones();
-			}
+			validarClaveRetiroDinero(); 
+		}
+		
+		
+		if(k > 2){
+			clear();
+			bloqueoRetiro = true;
+			cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
 		}
 	}
 }
