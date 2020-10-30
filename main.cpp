@@ -500,7 +500,8 @@ void validarClaveIngresoDinero(){
 			clear();
 			dineroTotal += dineroIngreso;
 			cout<<"\n\n\t\t*** Ingreso de dinero exitoso. ***"<<endl;
-			cout<<"\n\n\t\tAcabo de ingresar: $"<<dineroTotal;
+			cout<<"\n\n\t\tAcabo de ingresar: $"<<dineroIngreso
+			<<"\n\n\t\tEn su cuenta hay: $"<<dineroTotal;
 			cout<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
 			menuOpciones();
 		}
@@ -604,7 +605,8 @@ void validarClaveRetiroDinero(){
 			clear();
 			dineroTotal -= dineroRetiro;
 			cout<<"\n\n\t\t*** Retiro de dinero exitoso. ***"<<endl;
-			cout<<"\n\n\t\tSaldo en cuenta: $"<<dineroTotal;
+			cout<<"\n\n\t\tAcabo de retirar: $"<<dineroRetiro
+			<<"\n\n\t\tSaldo en cuenta: $"<<dineroTotal;
 			cout<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
 			menuOpciones();
 		}
