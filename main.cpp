@@ -1,9 +1,9 @@
 #include <iostream>
+#include <cstring>
 #include <string>
 #include <time.h> 
 #include <stdlib.h>
 #include <conio.h> //getch
-#include <ctype.h>
 
 /*
 	Convertir un string a int
@@ -17,9 +17,11 @@ using namespace std;
 //Variables globales
 #define longitud 4
 #define longitudCedula 8
-int key, j, l = 1, k = 1, m = 1, dineroIngreso, dineroRetiro, dineroTotal, i, valorIngreso, valorRetiro;
+#define longi_escape 7
+
+int key, e, j, k = 1, l = 1, m = 1, dineroIngreso, dineroRetiro, dineroTotal, i, valorIngreso, valorRetiro;
 bool bloqueoIngreso = false, bloqueoRetiro = false;
-char caracter, password[longitud];
+char caracter, password[longitud], valor[longi_escape];
 
 
 
@@ -27,18 +29,21 @@ void clear();
 void cambioDocumento();
 void preguntaRegistrarCorreo();
 void cambioCorreo();
-int claveAutomatica(int key);
+void claveAutomatica(int key);
 void preguntaCambioClave();
 void menuOpciones();
 void validarClaveGlobal();
+void escape();
 void cambioClave();
 void seeKey();
+void clearCambioClave();
 void clearIngresar();
 void clearRetirar();
 void ingresarDinero();
 void validarClaveIngresoDinero();
 void retirarDinero();
 void validarClaveRetiroDinero();
+void transferencias();
 
 /*Programa que simule un cajero automático con un saldo inicial de 1000 dólares*/
 
@@ -62,7 +67,6 @@ int main(int argc, char** argv) {
 		getline(cin, nombre_y_apellido);
 	}
 	clear();
-	
 	
 		//Ingreso de documento
 	cambioDocumento();
@@ -193,7 +197,7 @@ void cambioCorreo(){
 
 
 //Inicio funcion claveAutomatica(int clave)
-int claveAutomatica(int key) {
+void claveAutomatica(int key) {
 	cout<<"\n\t\tClave: "<<key<<endl;
 }
 //Final funcion claveAutomatica(int clave)
@@ -285,7 +289,7 @@ void menuOpciones(){
 		//case 4: verSaldo(); break;
 		//case 5: verMisDatos(); break;
 		//case 6: modificarNombre(); break;
-		//case 7: cambiarClave(); break;
+		//case 7: clearCambioClave(); cambiarClave(); break;
 		//case 8: salir(); break;
 		default: cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."; clear(); menuOpciones();
 	}
@@ -306,12 +310,16 @@ void validarClaveGlobal(){
 		if(caracter == 13){ //tecla de enter
 			password[i] = '\0'; //caracter nulo para indicar el final de una cadena, si doy enter y no hay nada no me arroja el cacter del enter
 			break;
-				
+
+		} else if(caracter == 27){
+			clear();
+			menuOpciones();
+			
 		} else if(caracter == 8){
 			if(i > 0){
 				i--;
 				cout<<"\b \b";
-			}	
+			}
 		} else{
 			if(i < longitud){
 				cout<<"*";
@@ -327,23 +335,58 @@ void validarClaveGlobal(){
 
 
 
+//Inicio Funcion escape()
+void escape(){
+
+	int i;
+	char caracter;
+	
+	while(caracter = getch()){ 
+		if(caracter == 13){
+			valor[i] = '\0';
+			break;
+
+		} else if(caracter == 27){
+			clear();
+			menuOpciones();
+			
+		} else if(caracter == 8){
+			if(i > 0){
+				i--;
+				cout<<"\b \b";
+			}
+		} else{
+			if(i < longi_escape){
+				cout<<caracter;
+				valor[i] = caracter;
+				i++;
+			}
+		}
+	}
+	e = i;
+}
+//Final Funcion escape()
+
+
+
+
 //Inicio Funcion cambioClave()
 void cambioClave(){
 	
 	validarClaveGlobal();
 	
 	if(j == 0){
-		clear();
-		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
+		clearCambioClave();
+		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero."<<endl;
 		cambioClave();
 	}
 	
 	if(j < longitud){
-		clear();
+		clearCambioClave();
 		
 		while(k < 3){
-			cout<<"\n\n\n\t\tERROR // Debe ingresar una clave valida."
-			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
+			cout<<"\n\n\n\t\tERROR // Debe ingresar una clave valida."<<endl
+			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"<<endl;
 			k++;
 			cambioClave(); 
 		}
@@ -357,7 +400,7 @@ void cambioClave(){
 		}
 			
 	} else{
-		clear();
+		clearCambioClave();
 		seeKey();
 	}
 }
@@ -399,24 +442,38 @@ void seeKey(){
 
 
 
-//Inicio funcion clearIngresar()
+//Inicio Funcion clearCambioClave()
+void clearCambioClave(){
+	system("cls");
+	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl
+	<<"\n\n\n\t\t\t\t***Cambio de clave***"<<endl
+	<<"\n\t\t***Si desea cancelar el procedimiento, presione la tecla 'Esc' en cualquier momento***"<<endl<<endl;
+}
+//Final Funcion clearCambioClave()
+
+
+
+
+//Inicio Funcion clearIngresar()
 void clearIngresar(){
 	system("cls");
-	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl;
-	cout<<"\n\n\n\t\t***Ingresar dinero***"<<endl;
+	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl
+	<<"\n\n\n\t\t\t\t***Ingresar dinero***"<<endl
+	<<"\n\t\t***Si desea cancelar el procedimiento, presione la tecla 'Esc' en cualquier momento***"<<endl<<endl;
 }
-//Final funcion clearIngresar()
+//Final Funcion clearIngresar()
 
 
 
 
-//Inicio funcion clearRetirar()
+//Inicio Funcion clearRetirar()
 void clearRetirar(){
 	system("cls");
-	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl;
-	cout<<"\n\n\n\t\t***Retirar dinero***"<<endl;
+	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl
+	<<"\n\n\n\t\t\t***Retirar dinero***"<<endl
+	<<"\n\t\t***Si desea cancelar el procedimiento, presione la tecla 'Esc' en cualquier momento***"<<endl<<endl;
 }
-//Final funcion clearRetirar()
+//Final Funcion clearRetirar()
 
 
 
@@ -424,18 +481,16 @@ void clearRetirar(){
 //Inicio Funcion ingresarDinero()
 void ingresarDinero(){
 	
-	string ingreso;
-	
 	cout<<"\n\t- Cuanto dinero desea ingresar: $ ";
-	getline(cin, ingreso);
+	escape();
 	
-	if(ingreso.empty()){
+	if(e == 0){
 		clearIngresar();
 		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
 		ingresarDinero();
 	}
 	
-	dineroIngreso = atoi(ingreso.c_str()); //Convertir un string a int
+	dineroIngreso = atoi(valor);
 	
 	if(dineroIngreso > 1000000){
 		clearIngresar();
@@ -453,7 +508,7 @@ void ingresarDinero(){
 		
 	} else{
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cout<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
 		ingresarDinero();
 	}
 }
@@ -466,7 +521,7 @@ void ingresarDinero(){
 void validarClaveIngresoDinero(){
 	
 	validarClaveGlobal();
-
+	
 	if(j == 0){
 		clearIngresar();
 		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
@@ -533,31 +588,29 @@ void validarClaveIngresoDinero(){
 //Inicio Funcion retirarDinero()
 void retirarDinero(){
 	
-	string retiro;
-	
 	cout<<"\n\t- Cuanto dinero desea retirar: $ ";
-	getline(cin, retiro);
-	
-	if(retiro.empty()){
+	escape();
+		
+	if(e == 0){
 		clearRetirar();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion."<<endl;
+		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
 		retirarDinero();
 	}
 	
-	dineroRetiro = atoi(retiro.c_str()); //Convertir un string a int
+	dineroRetiro = atoi(valor); //Convertir un string a int
 	
 	if(dineroRetiro > dineroTotal){
 		clearRetirar();
 		cout<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
 		retirarDinero();
 	
-	} else if (dineroRetiro >= 0 && dineroRetiro <= dineroTotal){
+	} else if (dineroRetiro > 0 && dineroRetiro <= dineroTotal){
 		clearRetirar();	
 		validarClaveRetiroDinero();	
 			
 	} else{
 		clearRetirar();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cout<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
 		retirarDinero();
 	}
 }
@@ -636,6 +689,9 @@ void validarClaveRetiroDinero(){
 
 
 
-
+//
+void transferencias(){
+	
+}
 
 
