@@ -11,17 +11,29 @@ string dinero;
 money = atoi(dinero.c_str()); 
 */
 
+/*
+system("pause");
+*/
+
+/*
+//Este codigo es para que indique cuantas cifras tiene un numero ingresado
+while(ahorros >= 10){
+	ahorros /= 10;
+	cifras++;
+}
+*/
 
 using namespace std;
 
 //Variables globales
+#define longiCedula 11
 #define longitud 4
-#define longitudCedula 8
-#define longi_escape 7
+#define longiEscape 7
+#define longiNumeroCuenta 20
 
-int key, e, j, k = 1, l = 1, m = 1, dineroIngreso, dineroRetiro, dineroTotal, i, valorIngreso, valorRetiro;
-bool bloqueoIngreso = false, bloqueoRetiro = false;
-char caracter, password[longitud], valor[longi_escape];
+int key, e, j, k = 1, l = 1, m = 1, dineroIngreso, dineroRetiro, dineroTransferencia, dineroTotal, i, valorIngreso, valorRetiro, valorTransferencia;
+bool bloqueoIngreso = false, bloqueoRetiro = false, bloqueoTransaccion = false;
+char documento[longiCedula], caracter, password[longitud], valor[longiEscape], numeroCuenta[longiNumeroCuenta];
 
 
 
@@ -39,11 +51,20 @@ void seeKey();
 void clearCambioClave();
 void clearIngresar();
 void clearRetirar();
+void clearTransferencias();
 void ingresarDinero();
 void validarClaveIngresoDinero();
 void retirarDinero();
 void validarClaveRetiroDinero();
 void transferencias();
+void validarNumeroCuenta();
+void validarCantidadTransferir();
+void validarClaveTransferenciaDinero();
+void cuentaAhorros();
+void cuentaCorriente();
+void otrosBancos();
+
+
 
 /*Programa que simule un cajero automático con un saldo inicial de 1000 dólares*/
 
@@ -106,17 +127,38 @@ void clear(){
 
 //Inicio Funcion cambioDocumento()
 void cambioDocumento(){
-	string documento;
+	
+	int i;
+	char caracter;
 	
 	cout<<"\n\n\t- Ingrese su documento de identidad: ";
-	getline(cin, documento);
-
-	if(documento.empty()){
+	
+	while(caracter = getch()){ 
+		if(caracter == 13){
+			documento[i] = '\0';
+			break;
+			
+		} else if(caracter == 8){
+			if(i > 0){
+				i--;
+				cout<<"\b \b";
+			}
+		} else{
+			if(i < longiCedula){
+				cout<<caracter;
+				documento[i] = caracter;
+				i++;
+			}
+		}
+	}
+	
+	if(i == 0){
 		clear();
 		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion.";
 		cambioDocumento();
-		
-	} else if(documento.length() < longitudCedula){
+	}
+	
+	if(strlen(documento) < longiCedula){
 		clear();
 		cout<<"\n\n\t\tERROR // El documento ingresado no es valido.";
 		cambioDocumento();
@@ -245,53 +287,66 @@ void menuOpciones(){
 	
 	int opcionMenu;
 	
-	cout<<"\n\n\t\t\t//Menu de opciones//"<<endl;
-	cout<<"\n\t\t\t1. Ingresar dinero"<<endl;
-	cout<<"\n\t\t\t2. Retirar dinero"<<endl;
-	cout<<"\n\t\t\t3. Transferencias"<<endl;
-	cout<<"\n\t\t\t4. Ver saldo"<<endl;
-	cout<<"\n\t\t\t5. Ver mis datos"<<endl;
-	cout<<"\n\t\t\t6. Modificar nombre"<<endl;
-	cout<<"\n\t\t\t7. Cambiar clave"<<endl;
-	cout<<"\n\t\t\t8. Salir"<<endl;
-	cout<<"\n\t-Elija una opcion: ";
+	cout<<"\n\n\t\t\t//Menu de opciones//"<<endl
+		<<"\n\t\t\t1. Ingresar dinero"<<endl
+		<<"\n\t\t\t2. Retirar dinero"<<endl
+		<<"\n\t\t\t3. Transferencias"<<endl
+		<<"\n\t\t\t4. Ver saldo"<<endl
+		<<"\n\t\t\t5. Ver mis datos"<<endl
+		<<"\n\t\t\t6. Modificar nombre"<<endl
+		<<"\n\t\t\t7. Cambiar clave"<<endl
+		<<"\n\t\t\t8. Salir"<<endl
+		<<"\n\t-Elija una opcion: ";
 	cin>>opcionMenu;
 	cin.ignore(); // Se coloca despues de un cin para ignore el ultimo \n
 	
 	
 	switch(opcionMenu){
 		case 1: 
-		if(bloqueoIngreso == true){
-			clear();
-			cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
-			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-			menuOpciones();
+			if(bloqueoIngreso == true){
+				clear();
+				cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
+					<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl
+					<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+				menuOpciones();
 		
-		} else{
-			clearIngresar(); 
-			ingresarDinero();
-		}
+			} else{
+				clearIngresar(); 
+				ingresarDinero();
+			}
 		
-		case 2: 
-		if(bloqueoRetiro == true){
-			clear();
-			cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
-			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
-			menuOpciones();
+		case 2:
+			if(bloqueoRetiro == true){
+				clear();
+				cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar el retiro de su dinero\n"
+					<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl
+					<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+				menuOpciones();
 		
-		} else{
-			clearRetirar(); 
-			retirarDinero();
-		}
-		//case 3: transferencias(); break;
+			} else{
+				clearRetirar(); 
+				retirarDinero();
+			}
+		
+		case 3:
+			if(bloqueoTransaccion == true){
+				clear();
+				cout<<"\n\n\t\tUsted ya ha superado el numero mayor de intentos, para realizar la transaccion\n"
+					<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl
+					<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+				menuOpciones();
+				
+			} else{
+				clearTransferencias();
+				transferencias(); 
+			}
+				
 		//case 4: verSaldo(); break;
 		//case 5: verMisDatos(); break;
 		//case 6: modificarNombre(); break;
 		//case 7: clearCambioClave(); cambiarClave(); break;
 		//case 8: salir(); break;
-		default: cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."; clear(); menuOpciones();
+		default: clear(); cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."; menuOpciones();
 	}
 }
 //Final Funcion menuOpciones()
@@ -356,7 +411,7 @@ void escape(){
 				cout<<"\b \b";
 			}
 		} else{
-			if(i < longi_escape){
+			if(i < longiEscape){
 				cout<<caracter;
 				valor[i] = caracter;
 				i++;
@@ -478,6 +533,18 @@ void clearRetirar(){
 
 
 
+//Inicio Funcion clearTransferencias()
+void clearTransferencias(){
+	system("cls");
+	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl
+	<<"\n\n\n\t\t\t***Transferencia***"<<endl
+	<<"\n\t\t***Si desea cancelar la transaccion, presione la tecla 'Esc' en cualquier momento***"<<endl<<endl;
+}
+//Final Funcion clearTransferencias()
+
+
+
+
 //Inicio Funcion ingresarDinero()
 void ingresarDinero(){
 	
@@ -490,6 +557,7 @@ void ingresarDinero(){
 		ingresarDinero();
 	}
 	
+		//Convertir un char a int 
 	dineroIngreso = atoi(valor);
 	
 	if(dineroIngreso > 1000000){
@@ -689,9 +757,209 @@ void validarClaveRetiroDinero(){
 
 
 
-//
+//Inicio Funcion transferencias()
 void transferencias(){
 	
+	int opcionTransferencia;
+	
+	cout<<"\n\t//Por favor indique a donde quiere transferir el dinero.//"<<endl
+		<<"\n\t\t\t1. A Cuenta de Ahorros Tu banco virtual."<<endl
+		<<"\n\t\t\t2. A Cuenta Corriente Tu banco virtual."<<endl
+		<<"\n\t\t\t3. A otro Banco."<<endl
+		<<"\n\t-Elija una opcion: ";
+	cin>>opcionTransferencia;
+	cin.ignore();
+	
+	switch(opcionTransferencia){
+		case 1: clearTransferencias(); cuentaAhorros();
+		case 2: clearTransferencias(); cuentaCorriente();
+		case 3: clearTransferencias(); otrosBancos();
+		default: clearTransferencias(); cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."<<endl; transferencias();
+	}
+}
+//Final Funcion transferencias()
+
+
+
+
+//Inicio Funcion validarNumeroCuenta()
+void validarNumeroCuenta(){
+	
+	int i;
+	char caracter;
+	
+	cout<<"\n\t\tPor favor complete todos los datos para continuar con la transaccion."<<endl
+		<<"\n\t- Numero de Cuenta de Ahorros: ";
+	
+	while(caracter = getch()){ 
+		if(caracter == 13){
+			numeroCuenta[i] = '\0';
+			break;
+
+		} else if(caracter == 27){
+			clear();
+			menuOpciones();
+			
+		} else if(caracter == 8){
+			if(i > 0){
+				i--;
+				cout<<"\b \b";
+			}
+		} else{
+			if(i < longiNumeroCuenta){
+				cout<<caracter;
+				numeroCuenta[i] = caracter;
+				i++;
+			}
+		}
+	}
+	
+	if(i == 0){
+		clearTransferencias();
+		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		validarNumeroCuenta();
+	}
+	
+	if(strlen(numeroCuenta) < longiNumeroCuenta){
+		clearTransferencias();
+		cout<<"\n\n\t\tERROR // El numero ingresado no es valido."<<endl;
+		validarNumeroCuenta();	
+	} 
+}
+//Final Funcion validarNumeroCuenta()
+
+
+
+
+//Inicio Funcion validarCantidadTransferir()
+void validarCantidadTransferir(){
+	
+	cout<<"\n\t\tPor favor complete todos los datos para continuar con la transaccion."<<endl
+		<<"\n\t- Cuanto dinero desea transferir: $ ";
+	escape();
+	
+	if(e == 0){
+		clearTransferencias();
+		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		validarCantidadTransferir();
+	}
+	
+	dineroTransferencia = atoi(valor);
+	
+	if(dineroTransferencia > dineroTotal){
+		clearTransferencias();
+		cout<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
+		validarCantidadTransferir();
+	
+	} else if (dineroTransferencia > 0 && dineroTransferencia <= dineroTotal){
+		clearTransferencias();	
+		validarClaveTransferenciaDinero();	
+			
+	} else{
+		clearTransferencias();
+		cout<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
+		validarCantidadTransferir();
+	}
+}
+//Final Funcion validarCantidadTransferir()
+
+
+
+
+//Inicio Funcion validarClaveTransferenciaDinero()
+void validarClaveTransferenciaDinero(){
+	
+	validarClaveGlobal();
+	
+	if(j == 0){
+		clearTransferencias();
+		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
+		validarClaveTransferenciaDinero();
+	}
+	
+	if(j < longitud){
+	
+		while(l < 3){
+			clearTransferencias();
+			cout<<"\n\n\t\tERROR // La clave no es valida."
+			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
+			l++;
+			validarClaveTransferenciaDinero();
+		}
+		
+		if(l > 2){
+			clear();
+			bloqueoTransaccion = true;
+			cout<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		}
+	} else {
+		
+		valorTransferencia = atoi(password);
+		
+		if(valorTransferencia == key){
+			clear();
+			dineroTotal -= dineroTransferencia;
+			cout<<"\n\n\t\t*** Transferencia de dinero exitosa. ***"<<endl;
+			cout<<"\n\n\t\tAcabo de transferir: $"<<dineroTransferencia
+			<<"\n\n\t\tSaldo en cuenta: $"<<dineroTotal;
+			cout<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		}
+		
+		while(l < 3){
+			clearTransferencias();
+			cout<<"\n\n\t\tERROR // La clave no es valida."
+			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
+			l++;
+			validarClaveTransferenciaDinero();
+		}
+		
+		if(l > 2){
+			clear();
+			bloqueoTransaccion = true;
+			cout<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***"
+			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el ingreso de su dinero\n"
+			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
+			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			menuOpciones();
+		}
+	}
+}
+//Final Funcion validarClaveTransferenciaDinero()
+
+
+
+
+//Inicio Funcion cuentaAhorros()
+void cuentaAhorros(){
+	
+	validarNumeroCuenta();
+	clearTransferencias();
+	validarCantidadTransferir();
+	
+	validarClaveTransferenciaDinero();
+}
+//Final Funcion cuentaAhorros()
+
+
+
+
+
+
+
+
+void cuentaCorriente(){
+	cout<<"\n\t\tPor favor complete todos los datos para coninuar con la transaccion."<<endl;
 }
 
+void otrosBancos(){
+	cout<<"\n\t\tPor favor complete todos los datos para coninuar con la transaccion."<<endl;
+}
+
+/*cout<"Indique el banco (lista de bancos)"
+cout<<"Numero de cuenta"*/
 
