@@ -1,9 +1,10 @@
 #include <iostream>
 #include <cstring>
-#include <string>
+#include <string.h>
 #include <time.h> 
 #include <stdlib.h>
 #include <conio.h> //getch
+#include <iomanip>
 
 /*
 	Convertir un string a int
@@ -72,25 +73,53 @@ void otrosBancos();
 //Inicio Funcion main()
 int main(int argc, char** argv) {
 	
+		//Variables
 	string nombre_y_apellido;
 	
 		//Saludo de bienvenida
-	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl;
+	cout<<"\n"<<setw(85)<<"************************************************************"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"Bienvenido a Tu Banco Virtual"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(85)<<"************************************************************";
 	
 		//Validacion del Nombre
-	cout<<"\n\n\t- Ingrese su primer nombre y primer apellido: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(49)<<"-Ingrese su primer nombre y primer apellido: "<<setw(10)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"X ";
+	
 	getline(cin, nombre_y_apellido);
 	
 	while(nombre_y_apellido.empty()){
 		clear();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion."<<endl;
-		cout<<"\n\t- Ingrese su primer nombre y primer apellido: ";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(49)<<"-Ingrese su primer nombre y primer apellido: "<<setw(10)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(35)<<"X ";
 		getline(cin, nombre_y_apellido);
 	}
+	
+	cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
+	//cin.ignore();
+		<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+		<<"\n"<<setw(85)<<"------------------------------------------------------------"
+		<<"\n"<<setw(55)<<":V";
+	cin.get();
 	clear();
 	
 		//Ingreso de documento
 	cambioDocumento();
+	cout<<"\n"
+		<<"\n"<<setw(85)<<"------------------------------------------------------------"
+		<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+		<<"\n"<<setw(85)<<"------------------------------------------------------------"
+		<<"\n"<<setw(55)<<":V";
+	cin.get();
 	clear();
 	
 	
@@ -99,7 +128,11 @@ int main(int argc, char** argv) {
 	
 	
 		//Clave aleatoria
-	cout<<"\n\n\t\tHola, "<<nombre_y_apellido<<" esta es su clave que se ha generado de manera automatica, desea modificarla?"<<endl;	
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(13)<<"->Hola, "<<nombre_y_apellido<<" esta es su clave,"
+		<<"\n"<<setw(26)<<"*"<<setw(52)<<"la cual se ha generado de manera automatica, "<<setw(7)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(26)<<"desea modificarla? "<<setw(33)<<"*";
 	srand(time(NULL));
 	key = 0 + rand()%(10000-1);
 	claveAutomatica(key);
@@ -118,7 +151,11 @@ int main(int argc, char** argv) {
 //Inicio funcion clear()
 void clear(){
 	system("cls");
-	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl;
+	cout<<"\n"<<setw(85)<<"************************************************************"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"Bienvenido a Tu Banco Virtual"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(85)<<"************************************************************";
 }
 //Final funcion clear()
 
@@ -131,7 +168,10 @@ void cambioDocumento(){
 	int i;
 	char caracter;
 	
-	cout<<"\n\n\t- Ingrese su documento de identidad: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+	cout<<"\n"<<setw(26)<<"*"<<setw(40)<<"-Ingrese su documento de identidad: "<<setw(19)<<"*";
+	cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
+	cout<<"\n"<<setw(35)<<"X ";
 	
 	while(caracter = getch()){ 
 		if(caracter == 13){
@@ -154,13 +194,19 @@ void cambioDocumento(){
 	
 	if(i == 0){
 		clear();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion.";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
 		cambioDocumento();
 	}
 	
 	if(strlen(documento) < longiCedula){
 		clear();
-		cout<<"\n\n\t\tERROR // El documento ingresado no es valido.";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(54)<<"ERROR :O | El documento ingresado no es valido."<<setw(5)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cambioDocumento();
 	}
 }
@@ -173,25 +219,44 @@ void cambioDocumento(){
 void preguntaRegistrarCorreo(){
 	string preguntaCorreo;
 	
-	cout<<"\n\n\t- Desea registrar un correo electronico?";
-	cout<<"\n\t- s/n: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"-Desea registrar un correo electronico?"<<setw(16)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"s/n: ";
+
 	getline(cin, preguntaCorreo);
-	
+
 	if( preguntaCorreo.empty() ){
 		clear();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion."; 
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(56)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(3)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"; 
 		preguntaRegistrarCorreo();
 		
 	} else if(preguntaCorreo == "s" || preguntaCorreo == "S" || preguntaCorreo == "si" || preguntaCorreo == "SI" || preguntaCorreo == "sI" || preguntaCorreo == "Si"){
+		cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
 		clear();
 		cambioCorreo();
 		
 	} else if(preguntaCorreo == "n" || preguntaCorreo == "N" || preguntaCorreo == "no" || preguntaCorreo =="NO" || preguntaCorreo == "nO" || preguntaCorreo == "No"){
+		cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
 		clear();
 		
 	} else{
 		clear();
-		cout<<"\n\n\t\tERROR // Ingrese una opcion valida."; 
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		preguntaRegistrarCorreo();
 	}
 }
@@ -206,7 +271,10 @@ void cambioCorreo(){
 	char caracter = '@';
 	bool b;
 	
-	cout<<"\n\n\t- Ingrese el correo electronico a registrar: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(48)<<"-Ingrese el correo electronico a registrar: "<<setw(11)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"X ";
 	getline(cin, correo);
 	
 	if( !correo.empty() ){
@@ -218,18 +286,36 @@ void cambioCorreo(){
 		
 		if(b == true){
 			clear();
-			cout<<"\n\n\n\t\t*** Registro de correo electronico exitoso. ***"<<endl
-			<<"\n\t\t*** Recuerde que puede modificar su correo electronico desde el menu de opciones. ***"<<endl
-			<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(53)<<"++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(53)<<"+  ->Registro de correo electronico exitoso<-  +"<<setw(6)<<"*"<<endl
+				<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(33)<<"|Recuerde que puede modificar"<<setw(14)<<"+"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(26)<<"|su correo electronico"<<setw(21)<<"+"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(31)<<"|desde el menu de opciones."<<setw(16)<<"+"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(53)<<"++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 						
 		} else if(b == false){
 			clear();
-			cout<<"\n\n\t\tERROR // La direccion de correo electronico no es valida, debe ingresar el '@'.";
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(42)<<"|----> :O ERROR :O <----|"<<setw(17)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(54)<<"La direccion de correo electronico no es valida,"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(27)<<"debe ingresar el '@'."<<setw(32)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
 			cambioCorreo();
 		}
 	} else{
 		clear();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion."; 
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
 		cambioCorreo();
 	}
 }
@@ -240,7 +326,8 @@ void cambioCorreo(){
 
 //Inicio funcion claveAutomatica(int clave)
 void claveAutomatica(int key) {
-	cout<<"\n\t\tClave: "<<key<<endl;
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"Clave: "<<key<<setw(12)<<"*";
 }
 //Final funcion claveAutomatica(int clave)
 
@@ -252,13 +339,19 @@ void preguntaCambioClave(){
 	
 	string modificarClave;
 	
-	cout<<"\n\t- s/n: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"s/n: ";
 	getline(cin, modificarClave);
 		
 	if(modificarClave.empty()){
 		clear();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion."
-		<<"\n\n\t- Esta es su clave "<<key<< ", desea modificarla?";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(22)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(13)<<"*";
 		preguntaCambioClave();
 			
 	} else if(modificarClave == "s" || modificarClave == "S" || modificarClave == "si" || modificarClave == "SI" || modificarClave == "sI" || modificarClave == "Si"){
@@ -270,8 +363,12 @@ void preguntaCambioClave(){
 
 	} else{
 		clear();
-		cout<<"\n\n\t\tERROR // Ingrese una opcion valida."
-		<<"\n\n\t- Esta es su clave "<<key<< ", desea modificarla?";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(25)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(10)<<"*";
 		preguntaCambioClave();	
 	}
 }
@@ -432,7 +529,7 @@ void cambioClave(){
 	
 	if(j == 0){
 		clearCambioClave();
-		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero."<<endl;
+		cerr<<"\n\n\t\tERROR // No ha ingresado ningun numero."<<endl;
 		cambioClave();
 	}
 	
@@ -440,7 +537,7 @@ void cambioClave(){
 		clearCambioClave();
 		
 		while(k < 3){
-			cout<<"\n\n\n\t\tERROR // Debe ingresar una clave valida."<<endl
+			cerr<<"\n\n\n\t\tERROR // Debe ingresar una clave valida."<<endl
 			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"<<endl;
 			k++;
 			cambioClave(); 
@@ -474,7 +571,7 @@ void seeKey(){
 	clear();
 	
 	if(verClave.empty()){
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion.";
+		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion.";
 		seeKey();
 		
 	} else if(verClave == "s" || verClave == "S" || verClave == "si" || verClave == "SI" || verClave == "sI" || verClave == "Si"){
@@ -488,7 +585,7 @@ void seeKey(){
 		menuOpciones();
 			
 	} else{
-		cout<<"\n\n\t\tERROR // Ingrese una opcion valida.";
+		cerr<<"\n\n\t\tERROR // Ingrese una opcion valida.";
 		seeKey();
 	}
 }
@@ -553,7 +650,7 @@ void ingresarDinero(){
 	
 	if(e == 0){
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
 		ingresarDinero();
 	}
 	
@@ -562,12 +659,12 @@ void ingresarDinero(){
 	
 	if(dineroIngreso > 1000000){
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // Lo maximo permitido para ingresar es $1.000.000."<<endl;
+		cerr<<"\n\n\t\tERROR // Lo maximo permitido para ingresar es $1.000.000."<<endl;
 		ingresarDinero();
 	
 	} else if (dineroIngreso > 0 && dineroIngreso < 20000){
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // Lo minimo permitido para ingresar es $20.000."<<endl;
+		cerr<<"\n\n\t\tERROR // Lo minimo permitido para ingresar es $20.000."<<endl;
 		ingresarDinero();
 			
 	} else if(dineroIngreso > 19999 && dineroIngreso < 1000001){
@@ -576,7 +673,7 @@ void ingresarDinero(){
 		
 	} else{
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
+		cerr<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
 		ingresarDinero();
 	}
 }
@@ -592,7 +689,7 @@ void validarClaveIngresoDinero(){
 	
 	if(j == 0){
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
+		cerr<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
 		validarClaveIngresoDinero();
 	}
 	
@@ -600,7 +697,7 @@ void validarClaveIngresoDinero(){
 	
 		while(l < 3){
 			clearIngresar();
-			cout<<"\n\n\t\tERROR // La clave no es valida."
+			cerr<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
 			l++;
 			validarClaveIngresoDinero();
@@ -631,7 +728,7 @@ void validarClaveIngresoDinero(){
 		
 		while(l < 3){
 			clearIngresar();
-			cout<<"\n\n\t\tERROR // La clave no es valida."
+			cerr<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
 			l++;
 			validarClaveIngresoDinero();
@@ -661,7 +758,7 @@ void retirarDinero(){
 		
 	if(e == 0){
 		clearRetirar();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
 		retirarDinero();
 	}
 	
@@ -669,7 +766,7 @@ void retirarDinero(){
 	
 	if(dineroRetiro > dineroTotal){
 		clearRetirar();
-		cout<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
+		cerr<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
 		retirarDinero();
 	
 	} else if (dineroRetiro > 0 && dineroRetiro <= dineroTotal){
@@ -678,7 +775,7 @@ void retirarDinero(){
 			
 	} else{
 		clearRetirar();
-		cout<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
+		cerr<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
 		retirarDinero();
 	}
 }
@@ -694,7 +791,7 @@ void validarClaveRetiroDinero(){
 	
 	if(j == 0){
 		clearIngresar();
-		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
+		cerr<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
 		validarClaveRetiroDinero();
 	}
 	
@@ -702,7 +799,7 @@ void validarClaveRetiroDinero(){
 		
 		while(k < 3){
 			clearIngresar();
-			cout<<"\n\n\t\tERROR // La clave no es valida."
+			cerr<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
 			k++;
 			validarClaveRetiroDinero(); 
@@ -734,7 +831,7 @@ void validarClaveRetiroDinero(){
 		
 		while(k < 3){
 			clearIngresar();
-			cout<<"\n\n\t\tERROR // La clave no es valida."
+			cerr<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***";
 			k++;
 			validarClaveRetiroDinero(); 
@@ -816,13 +913,13 @@ void validarNumeroCuenta(){
 	
 	if(i == 0){
 		clearTransferencias();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
 		validarNumeroCuenta();
 	}
 	
 	if(strlen(numeroCuenta) < longiNumeroCuenta){
 		clearTransferencias();
-		cout<<"\n\n\t\tERROR // El numero ingresado no es valido."<<endl;
+		cerr<<"\n\n\t\tERROR // El numero ingresado no es valido."<<endl;
 		validarNumeroCuenta();	
 	} 
 }
@@ -840,7 +937,7 @@ void validarCantidadTransferir(){
 	
 	if(e == 0){
 		clearTransferencias();
-		cout<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
 		validarCantidadTransferir();
 	}
 	
@@ -848,7 +945,7 @@ void validarCantidadTransferir(){
 	
 	if(dineroTransferencia > dineroTotal){
 		clearTransferencias();
-		cout<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
+		cerr<<"\n\n\t\tERROR // Fondos inuficientes."<<endl;
 		validarCantidadTransferir();
 	
 	} else if (dineroTransferencia > 0 && dineroTransferencia <= dineroTotal){
@@ -857,7 +954,7 @@ void validarCantidadTransferir(){
 			
 	} else{
 		clearTransferencias();
-		cout<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
+		cerr<<"\n\n\t\tERROR // El valor ingresado no es valido."<<endl;
 		validarCantidadTransferir();
 	}
 }
@@ -873,7 +970,7 @@ void validarClaveTransferenciaDinero(){
 	
 	if(j == 0){
 		clearTransferencias();
-		cout<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
+		cerr<<"\n\n\t\tERROR // No ha ingresado ningun numero.";
 		validarClaveTransferenciaDinero();
 	}
 	
@@ -881,7 +978,7 @@ void validarClaveTransferenciaDinero(){
 	
 		while(l < 3){
 			clearTransferencias();
-			cout<<"\n\n\t\tERROR // La clave no es valida."
+			cerr<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
 			l++;
 			validarClaveTransferenciaDinero();
@@ -912,7 +1009,7 @@ void validarClaveTransferenciaDinero(){
 		
 		while(l < 3){
 			clearTransferencias();
-			cout<<"\n\n\t\tERROR // La clave no es valida."
+			cerr<<"\n\n\t\tERROR // La clave no es valida."
 			<<"\n\n\t\t*** Numero de intentos: "<<l<<" de 3 ***";
 			l++;
 			validarClaveTransferenciaDinero();
