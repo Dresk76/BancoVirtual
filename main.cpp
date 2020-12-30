@@ -50,6 +50,7 @@ void escape();
 void cambioClave();
 void seeKey();
 void clearCambioClave();
+void clearCambioClaveDos();
 void clearIngresar();
 void clearRetirar();
 void clearTransferencias();
@@ -87,7 +88,7 @@ int main(int argc, char** argv) {
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(49)<<"-Ingrese su primer nombre y primer apellido: "<<setw(10)<<"*"
 		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
-		<<"\n"<<setw(35)<<"X ";
+		<<"\n"<<setw(35)<<"-> ";
 	
 	getline(cin, nombre_y_apellido);
 	
@@ -100,7 +101,7 @@ int main(int argc, char** argv) {
 			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(49)<<"-Ingrese su primer nombre y primer apellido: "<<setw(10)<<"*"
 			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
-			<<"\n"<<setw(35)<<"X ";
+			<<"\n"<<setw(35)<<"-> ";
 		getline(cin, nombre_y_apellido);
 	}
 	
@@ -114,8 +115,7 @@ int main(int argc, char** argv) {
 	
 		//Ingreso de documento
 	cambioDocumento();
-	cout<<"\n"
-		<<"\n"<<setw(85)<<"------------------------------------------------------------"
+	cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
 		<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
 		<<"\n"<<setw(85)<<"------------------------------------------------------------"
 		<<"\n"<<setw(55)<<":V";
@@ -128,9 +128,10 @@ int main(int argc, char** argv) {
 	
 	
 		//Clave aleatoria
+	clear();
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(13)<<"->Hola, "<<nombre_y_apellido<<" esta es su clave,"
+		<<"\n"<<setw(26)<<"*"<<setw(13)<<"Hola, "<<nombre_y_apellido<<" esta es su clave,"
 		<<"\n"<<setw(26)<<"*"<<setw(52)<<"la cual se ha generado de manera automatica, "<<setw(7)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(26)<<"desea modificarla? "<<setw(33)<<"*";
 	srand(time(NULL));
@@ -153,7 +154,7 @@ void clear(){
 	system("cls");
 	cout<<"\n"<<setw(85)<<"************************************************************"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(43)<<"Bienvenido a Tu Banco Virtual"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"BIENVENIDO A TU BANCO VIRTUAL"<<setw(16)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(85)<<"************************************************************";
 }
@@ -171,7 +172,7 @@ void cambioDocumento(){
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 	cout<<"\n"<<setw(26)<<"*"<<setw(40)<<"-Ingrese su documento de identidad: "<<setw(19)<<"*";
 	cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-	cout<<"\n"<<setw(35)<<"X ";
+	cout<<"\n"<<setw(35)<<"-> ";
 	
 	while(caracter = getch()){ 
 		if(caracter == 13){
@@ -194,17 +195,17 @@ void cambioDocumento(){
 	
 	if(i == 0){
 		clear();
-		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
 		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
 		cambioDocumento();
 	}
 	
-	if(strlen(documento) < longiCedula){
+	if(strlen(documento) < 8){
 		clear();
-		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cerr<<"\n"<<setw(26)<<"*"<<setw(54)<<"ERROR :O | El documento ingresado no es valido."<<setw(5)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cambioDocumento();
@@ -274,7 +275,7 @@ void cambioCorreo(){
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(48)<<"-Ingrese el correo electronico a registrar: "<<setw(11)<<"*"
 		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
-		<<"\n"<<setw(35)<<"X ";
+		<<"\n"<<setw(35)<<"-> ";
 	getline(cin, correo);
 	
 	if( !correo.empty() ){
@@ -288,17 +289,24 @@ void cambioCorreo(){
 			clear();
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(53)<<"++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(53)<<"+  ->Registro de correo electronico exitoso<-  +"<<setw(6)<<"*"<<endl
-				<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(33)<<"|Recuerde que puede modificar"<<setw(14)<<"+"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(26)<<"|su correo electronico"<<setw(21)<<"+"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(31)<<"|desde el menu de opciones."<<setw(16)<<"+"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(53)<<"++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(6)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(54)<<"++++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(49)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(46)<<">> Registro de correo electronico exitoso <<"<<setw(3)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(49)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(33)<<"|Recuerde que puede modificar"<<setw(16)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(26)<<"|su correo electronico"<<setw(23)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(31)<<"|desde el menu de opciones."<<setw(18)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(5)<<"+"<<setw(49)<<"+"<<setw(5)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(54)<<"++++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(5)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
+				
+			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			cin.get();
 						
 		} else if(b == false){
 			clear();
@@ -347,28 +355,50 @@ void preguntaCambioClave(){
 	if(modificarClave.empty()){
 		clear();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(22)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(13)<<"*";
 		preguntaCambioClave();
 			
 	} else if(modificarClave == "s" || modificarClave == "S" || modificarClave == "si" || modificarClave == "SI" || modificarClave == "sI" || modificarClave == "Si"){
+		cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
+		system("cls");
+		cout<<"\n"<<setw(85)<<"************************************************************"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(43)<<"BIENVENIDO A TU BANCO VIRTUAL"<<setw(16)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(40)<<"|--> CAMBIO DE CLAVE <--|"<<setw(19)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(40)<<">>|Si desea cancelar el procedimiento,"<<setw(19)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(49)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(85)<<"************************************************************";
 		cambioClave();
 		
 	} else if (modificarClave == "n" || modificarClave == "N" || modificarClave == "no" || modificarClave == "NO" || modificarClave == "nO" || modificarClave == "No"){
+		cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
 		clear();
 		menuOpciones();
 
 	} else{
 		clear();
-		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(25)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(10)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(22)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(13)<<"*";
 		preguntaCambioClave();	
 	}
 }
@@ -384,16 +414,22 @@ void menuOpciones(){
 	
 	int opcionMenu;
 	
-	cout<<"\n\n\t\t\t//Menu de opciones//"<<endl
-		<<"\n\t\t\t1. Ingresar dinero"<<endl
-		<<"\n\t\t\t2. Retirar dinero"<<endl
-		<<"\n\t\t\t3. Transferencias"<<endl
-		<<"\n\t\t\t4. Ver saldo"<<endl
-		<<"\n\t\t\t5. Ver mis datos"<<endl
-		<<"\n\t\t\t6. Modificar nombre"<<endl
-		<<"\n\t\t\t7. Cambiar clave"<<endl
-		<<"\n\t\t\t8. Salir"<<endl
-		<<"\n\t-Elija una opcion: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(53)<<"++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(36)<<"|--> Menu de opciones <--|"<<setw(11)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(19)<<"1. Ingresar dinero"<<setw(23)<<"5. Ver mis datos"<<setw(5)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(18)<<"2. Retirar dinero"<<setw(27)<<"6. Modificar nombre"<<setw(2)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(18)<<"3. Transferencias"<<setw(24)<<"7. Cambiar clave"<<setw(5)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(13)<<"4. Ver saldo"<<setw(21)<<"8. Salir"<<setw(13)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(6)<<"+"<<setw(47)<<"+"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(53)<<"++++++++++++++++++++++++++++++++++++++++++++++++"<<setw(6)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(63)<<"Elija una opcion: ";
 	cin>>opcionMenu;
 	cin.ignore(); // Se coloca despues de un cin para ignore el ultimo \n
 	
@@ -456,7 +492,10 @@ void validarClaveGlobal(){
 	
 	int i;
 	
-	cout<<"\n\n\t- Ingrese su clave, tiene 3 intentos: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+	cout<<"\n"<<setw(26)<<"*"<<setw(39)<<"-Ingrese su clave, tiene 3 intentos"<<setw(20)<<"*";
+	cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
+	cout<<"\n"<<setw(35)<<"-> ";
 	
 	while(caracter = getch()){ //No mostrar cuando escribe
 		if(caracter == 13){ //tecla de enter
@@ -528,8 +567,12 @@ void cambioClave(){
 	validarClaveGlobal();
 	
 	if(j == 0){
-		clearCambioClave();
-		cerr<<"\n\n\t\tERROR // No ha ingresado ningun numero."<<endl;
+		clearCambioClave();		
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(40)<<"ERROR :O |El campo esta vacio,"<<setw(19)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(50)<<"|No ha ingresado ningun numero."<<setw(9)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cambioClave();
 	}
 	
@@ -537,22 +580,45 @@ void cambioClave(){
 		clearCambioClave();
 		
 		while(k < 3){
-			cerr<<"\n\n\n\t\tERROR // Debe ingresar una clave valida."<<endl
-			<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"<<endl;
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(50)<<"ERROR :O | Debe ingresar una clave valida."<<setw(9)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(37)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(13)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 			k++;
 			cambioClave(); 
 		}
 		
 		if(k > 2){
-			cout<<"\n\n\t\t*** Numero de intentos: "<<k<<" de 3 ***"
-			<<"\n\n\t\tHa superado el numero mayor de intentos, para realizar el cambio de su clave\n"
-			<<" \t\tcomuniquese al 01-8000-555-666 o acerquese a una de nuestras oficinas."<<endl;
-			cout<<"\n\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+			clearCambioClaveDos();
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(36)<<">>> Numero de intentos: "<<k<<" de 3 <<<"<<setw(13)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(45)<<"|para realizar el cambio de su clave"<<setw(14)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
+			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			cin.get();
+			clear();
 			menuOpciones();
 		}
 			
 	} else{
-		clearCambioClave();
+		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
+		clearCambioClaveDos();
 		seeKey();
 	}
 }
@@ -566,26 +632,68 @@ void seeKey(){
 	
 	string verClave;
 	
-	cout<<"\n\n\t- Desea ver su clave? s/n: ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(44)<<">>> CAMBIO DE CLAVE EXITOSO <<<"<<setw(15)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(24)<<"-Desea ver su clave?"<<setw(35)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"s/n: ";
+		
 	getline(cin, verClave);
 	clear();
 	
 	if(verClave.empty()){
-		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese una opcion.";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(56)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(3)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 		seeKey();
 		
 	} else if(verClave == "s" || verClave == "S" || verClave == "si" || verClave == "SI" || verClave == "sI" || verClave == "Si"){
+		clearCambioClaveDos();
+		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
 		key = atoi(password);
-		cout<<"\n\n\t\t*** Su nueva clave es: "<<key<<" // recuerde que puede cambiar su clave desde el menu de opciones. ***"<<endl;
-		cout<<"\n\n\t------------------------------------------------------------------------------------------------"<<endl;
+		clearCambioClaveDos();
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(49)<<"++++++++++++++++++++++++++++++++++++++++++"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(41)<<"+"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(27)<<">>> Su nueva clave es: "<<key<<" <<<"<<setw(6)<<"+"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(41)<<"+"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(38)<<"|Recuerde que puede cambiar su clave"<<setw(3)<<"+"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(29)<<"|desde el menu de opciones."<<setw(12)<<"+"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(41)<<"+"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(49)<<"++++++++++++++++++++++++++++++++++++++++++"<<setw(10)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
+		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
+		clear();
 		menuOpciones();
 		
 	} else if (verClave == "n" || verClave == "N" || verClave == "no" || verClave == "NO" || verClave == "nO" || verClave == "No"){
+		cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<"XxX Presione la tecla enter para continuar XxX"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		cin.get();
 		key = atoi(password);
+		clear();
 		menuOpciones();
 			
 	} else{
-		cerr<<"\n\n\t\tERROR // Ingrese una opcion valida.";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 		seeKey();
 	}
 }
@@ -597,11 +705,36 @@ void seeKey(){
 //Inicio Funcion clearCambioClave()
 void clearCambioClave(){
 	system("cls");
-	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl
-	<<"\n\n\n\t\t\t\t***Cambio de clave***"<<endl
-	<<"\n\t\t***Si desea cancelar el procedimiento, presione la tecla 'Esc' en cualquier momento***"<<endl<<endl;
+	cout<<"\n"<<setw(85)<<"************************************************************"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"BIENVENIDO A TU BANCO VIRTUAL"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(40)<<"|--> CAMBIO DE CLAVE <--|"<<setw(19)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(40)<<">>|Si desea cancelar el procedimiento,"<<setw(19)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(49)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(10)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(85)<<"************************************************************";	
 }
 //Final Funcion clearCambioClave()
+
+
+
+
+//Inicio Funcion clearCambioClaveDos()
+void clearCambioClaveDos(){
+	system("cls");
+	cout<<"\n"<<setw(85)<<"************************************************************"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"BIENVENIDO A TU BANCO VIRTUAL"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(40)<<"|--> CAMBIO DE CLAVE <--|"<<setw(19)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(85)<<"************************************************************";
+}
+//Final Funcion clearCambioClaveDos()
 
 
 
