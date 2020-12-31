@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
 		//Saludo de bienvenida
 	cout<<"\n"<<setw(85)<<"************************************************************"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(43)<<"Bienvenido a Tu Banco"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"Bienvenido a tu Banco Virtual"<<setw(16)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(85)<<"************************************************************";
 	
