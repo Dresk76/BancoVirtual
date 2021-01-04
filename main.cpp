@@ -789,8 +789,8 @@ void clearIngresar(){
 		<<"\n"<<setw(26)<<"*"<<setw(41)<<"|--> INGRESAR DINERO <--|"<<setw(18)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(43)<<">>|Si desea cancelar el procedimiento,"<<setw(16)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(52)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(7)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(40)<<">>|Si desea cancelar el procedimiento,"<<setw(19)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(49)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(10)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(85)<<"************************************************************";
@@ -1022,8 +1022,8 @@ void validarClaveIngresoDinero(){
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(27)<<">>Ingreso realizado por: $"<<dineroIngreso<<setw(2)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(8)<<"+"<<setw(12)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(27)<<">>Ingreso realizado por: $"<<dineroIngreso<<setw(3)<<"+"<<setw(12)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(9)<<"+"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
@@ -1087,7 +1087,7 @@ void retirarDinero(){
 		<<"\n"<<setw(35)<<"$ ";
 	escape();
 	
-		if(e == 0){
+	if(e == 0){
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
@@ -1096,7 +1096,7 @@ void retirarDinero(){
 		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		retirarDinero();
 	}
-	
+			
 	dineroRetiro = atoi(valor); //Convertir un string a int
 	
 	if(dineroRetiro > dineroTotal){
@@ -1129,7 +1129,7 @@ void retirarDinero(){
 		clearRetirar();	
 		validarClaveRetiroDinero();	
 			
-	} else{
+	} else {
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
@@ -1147,7 +1147,7 @@ void retirarDinero(){
 void validarClaveRetiroDinero(){
 	
 	
-	//Iniio validarClaveGlobal();
+	//Inicio validarClaveGlobal();
 	int i;
 	
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
@@ -1486,10 +1486,6 @@ void cuentaAhorros(){
 
 
 
-
-
-
-
 void cuentaCorriente(){
 	cout<<"\n\t\tPor favor complete todos los datos para coninuar con la transaccion."<<endl;
 }
@@ -1500,4 +1496,6 @@ void otrosBancos(){
 
 /*cout<"Indique el banco (lista de bancos)"
 cout<<"Numero de cuenta"*/
+
+
 
