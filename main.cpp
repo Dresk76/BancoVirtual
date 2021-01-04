@@ -789,8 +789,8 @@ void clearIngresar(){
 		<<"\n"<<setw(26)<<"*"<<setw(41)<<"|--> INGRESAR DINERO <--|"<<setw(18)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(40)<<">>|Si desea cancelar el procedimiento,"<<setw(19)<<"*"
-		<<"\n"<<setw(26)<<"*"<<setw(49)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(10)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<">>|Si desea cancelar el procedimiento,"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(52)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(7)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(85)<<"************************************************************";
@@ -892,7 +892,7 @@ void ingresarDinero(){
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cerr<<"\n"<<setw(26)<<"*"<<setw(40)<<"ERROR :O |Lo maximo permitido"<<setw(19)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(49)<<"|para ingresar es $1.000.000."<<setw(10)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(48)<<"|para ingresar es $1.000.000"<<setw(11)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		ingresarDinero();
 	
@@ -901,7 +901,7 @@ void ingresarDinero(){
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cerr<<"\n"<<setw(26)<<"*"<<setw(41)<<"ERROR :O |Lo minimo permitido"<<setw(18)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(47)<<"|para ingresar es $20.000."<<setw(12)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para ingresar es $20.000"<<setw(13)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		ingresarDinero();
 			
@@ -1022,8 +1022,8 @@ void validarClaveIngresoDinero(){
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(27)<<">>Ingreso realizado por: $"<<dineroIngreso<<setw(3)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(9)<<"+"<<setw(12)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(27)<<">>Ingreso realizado por: $"<<dineroIngreso<<setw(2)<<"+"<<setw(12)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(8)<<"+"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
@@ -1120,8 +1120,8 @@ void retirarDinero(){
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O |Lo minimo permitido"<<setw(14)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(50)<<"|para retirar es $20.000."<<setw(9)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(42)<<"ERROR :O |Lo minimo permitido"<<setw(17)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para retirar es $20.000"<<setw(13)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		retirarDinero();
 	
