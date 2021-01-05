@@ -30,6 +30,8 @@ using namespace std;
 #define longiCedula 11
 #define longitud 4
 #define longiEscape 7
+#define longiRetiro 6
+#define longiQuestion 2
 #define longiNumeroCuenta 20
 
 int key, e, j, k = 1, l = 1, m = 1, dineroIngreso, dineroRetiro, dineroTransferencia, dineroTotal, i, valorIngreso, valorRetiro, valorTransferencia;
@@ -102,6 +104,14 @@ int main(int argc, char** argv) {
 		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		clear();
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(49)<<"-Ingrese su primer nombre y primer apellido: "<<setw(10)<<"*"
 			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
 			<<"\n"<<setw(35)<<"-> ";
@@ -115,7 +125,6 @@ int main(int argc, char** argv) {
 		<<"\n"<<setw(55)<<":V";
 	//cin.get();
 	limiteCero();
-	clear();
 	
 		//Ingreso de documento
 	cambioDocumento();
@@ -124,7 +133,6 @@ int main(int argc, char** argv) {
 		<<"\n"<<setw(85)<<"------------------------------------------------------------"
 		<<"\n"<<setw(55)<<":V";
 	limiteCero();
-	clear();
 	
 	
 		//Ingreso de correo
@@ -170,13 +178,15 @@ void clear(){
 //Inicio Funcion cambioDocumento()
 void cambioDocumento(){
 	
+	clear();
+	
 	int i;
 	char caracter;
 	
-	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-	cout<<"\n"<<setw(26)<<"*"<<setw(40)<<"-Ingrese su documento de identidad: "<<setw(19)<<"*";
-	cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-	cout<<"\n"<<setw(35)<<"-> ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(40)<<"-Ingrese su documento de identidad: "<<setw(19)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"-> ";
 	
 	while(caracter = getch()){ 
 		if(caracter == 13){
@@ -199,19 +209,33 @@ void cambioDocumento(){
 	
 	if(i == 0){
 		clear();
-		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		cambioDocumento();
 	}
 	
 	if(strlen(documento) < 8){
 		clear();
-		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(54)<<"ERROR :O | El documento ingresado no es valido."<<setw(5)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(53)<<"ERROR :O | El documento ingresado no es valido."<<setw(6)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		cambioDocumento();
 	}
 }
@@ -222,6 +246,9 @@ void cambioDocumento(){
 
 //Inicio funcion preguntaRegistrarCorreo()
 void preguntaRegistrarCorreo(){
+	
+	clear();
+	
 	string preguntaCorreo;
 	
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
@@ -234,9 +261,16 @@ void preguntaRegistrarCorreo(){
 	if( preguntaCorreo.empty() ){
 		clear();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(56)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(3)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"; 
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		preguntaRegistrarCorreo();
 		
 	} else if(preguntaCorreo == "s" || preguntaCorreo == "S" || preguntaCorreo == "si" || preguntaCorreo == "SI" || preguntaCorreo == "sI" || preguntaCorreo == "Si"){
@@ -245,7 +279,6 @@ void preguntaRegistrarCorreo(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		clear();
 		cambioCorreo();
 		
 	} else if(preguntaCorreo == "n" || preguntaCorreo == "N" || preguntaCorreo == "no" || preguntaCorreo =="NO" || preguntaCorreo == "nO" || preguntaCorreo == "No"){
@@ -254,14 +287,20 @@ void preguntaRegistrarCorreo(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		clear();
 		
 	} else{
 		clear();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(47)<<"ERROR :O | Ingrese una opcion valida."<<setw(12)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		preguntaRegistrarCorreo();
 	}
 }
@@ -272,6 +311,9 @@ void preguntaRegistrarCorreo(){
 
 //Inicio Funcion cambioCorreo()
 void cambioCorreo(){
+	
+	clear();
+	
 	string correo;
 	char caracter = '@';
 	bool b;
@@ -319,7 +361,14 @@ void cambioCorreo(){
 			cerr<<"\n"<<setw(26)<<"*"<<setw(42)<<"|----> :O ERROR :O <----|"<<setw(17)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(54)<<"La direccion de correo electronico no es valida,"<<setw(5)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(27)<<"debe ingresar el '@'."<<setw(32)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			limiteCero();
 			cambioCorreo();
 		}
 	} else{
@@ -327,7 +376,14 @@ void cambioCorreo(){
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
 		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		cambioCorreo();
 	}
 }
@@ -363,6 +419,14 @@ void preguntaCambioClave(){
 		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		clear();
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(22)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(13)<<"*";
 		preguntaCambioClave();
 			
@@ -372,18 +436,6 @@ void preguntaCambioClave(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		system("cls");
-		cout<<"\n"<<setw(85)<<"************************************************************"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(43)<<"BIENVENIDO A TU BANCO VIRTUAL"<<setw(16)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(40)<<"|--> CAMBIO DE CLAVE <--|"<<setw(19)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(40)<<">>|Si desea cancelar el procedimiento,"<<setw(19)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(49)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(10)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(85)<<"************************************************************";
 		cambioClave();
 		
 	} else if (modificarClave == "n" || modificarClave == "N" || modificarClave == "no" || modificarClave == "NO" || modificarClave == "nO" || modificarClave == "No"){
@@ -392,7 +444,6 @@ void preguntaCambioClave(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		clear();
 		menuOpciones();
 
 	} else{
@@ -402,6 +453,14 @@ void preguntaCambioClave(){
 		cerr<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*";
 		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		clear();
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(22)<<"-Esta es su clave "<<key<< ", desea modificarla?"<<setw(13)<<"*";
 		preguntaCambioClave();	
 	}
@@ -413,6 +472,9 @@ void preguntaCambioClave(){
 
 //Inicio Funcion menuOpciones()
 void menuOpciones(){
+	
+	clear();
+	
 	l = 1;
 	k = 1;
 	
@@ -449,16 +511,14 @@ void menuOpciones(){
 					<<"\n"<<setw(26)<<"*"<<setw(42)<<"|acerquese a una de nuestras oficinas."<<setw(17)<<"*"
 					<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 					<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-				cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+				cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
 					<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 					<<"\n"<<setw(85)<<"------------------------------------------------------------"
 					<<"\n"<<setw(55)<<":V";
 				limiteCero();
-				clear();
 				menuOpciones();
 		
 			} else{
-				clearIngresar(); 
 				ingresarDinero();
 			}
 		
@@ -472,16 +532,14 @@ void menuOpciones(){
 					<<"\n"<<setw(26)<<"*"<<setw(42)<<"|acerquese a una de nuestras oficinas."<<setw(17)<<"*"
 					<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 					<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-				cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+				cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
 					<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 					<<"\n"<<setw(85)<<"------------------------------------------------------------"
 					<<"\n"<<setw(55)<<":V";
 				limiteCero();
-				clear();
 				menuOpciones();
 		
 			} else{
-				clearRetirar(); 
 				retirarDinero();
 			}
 		
@@ -494,7 +552,6 @@ void menuOpciones(){
 				menuOpciones();
 				
 			} else{
-				clearTransferencias();
 				transferencias(); 
 			}
 				
@@ -604,15 +661,23 @@ void escape(){
 //Inicio Funcion cambioClave()
 void cambioClave(){
 	
+	clearCambioClave();
 	validarClaveGlobal();
 	
 	if(j == 0){
 		clearCambioClave();		
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(40)<<"ERROR :O |El campo esta vacio,"<<setw(19)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(50)<<"|No ha ingresado ningun numero."<<setw(9)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(39)<<"ERROR :O |El campo esta vacio,"<<setw(20)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(49)<<"|No ha ingresado ningun numero."<<setw(10)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		cambioClave();
 	}
 	
@@ -621,12 +686,18 @@ void cambioClave(){
 		
 		while(k < 3){
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cerr<<"\n"<<setw(26)<<"*"<<setw(50)<<"ERROR :O | Debe ingresar una clave valida."<<setw(9)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(49)<<"ERROR :O | Debe ingresar una clave valida."<<setw(10)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(37)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(13)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			limiteCero();
 			k++;
 			cambioClave(); 
 		}
@@ -634,21 +705,19 @@ void cambioClave(){
 		if(k > 2){
 			clearCambioClaveDos();
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(36)<<">>> Numero de intentos: "<<k<<" de 3 <<<"<<setw(13)<<"*"
-				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(15)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(45)<<"|para realizar el cambio de su clave"<<setw(14)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 			
@@ -658,7 +727,6 @@ void cambioClave(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		clearCambioClaveDos();
 		seeKey();
 	}
 }
@@ -670,6 +738,7 @@ void cambioClave(){
 //Inicio Funcion seeKey()
 void seeKey(){
 	
+	clearCambioClaveDos();
 	string verClave;
 	
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
@@ -680,25 +749,24 @@ void seeKey(){
 		<<"\n"<<setw(35)<<"s/n: ";
 		
 	getline(cin, verClave);
-	clear();
+	clearCambioClaveDos();
 	
 	if(verClave.empty()){
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(56)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(3)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-		seeKey();
-		
-	} else if(verClave == "s" || verClave == "S" || verClave == "si" || verClave == "SI" || verClave == "sI" || verClave == "Si"){
-		clearCambioClaveDos();
-		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(55)<<"ERROR :O | El campo esta vacio, ingrese una opcion."<<setw(4)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
+		seeKey();
+		
+	} else if(verClave == "s" || verClave == "S" || verClave == "si" || verClave == "SI" || verClave == "sI" || verClave == "Si"){
 		key = atoi(password);
-		clearCambioClaveDos();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(49)<<"++++++++++++++++++++++++++++++++++++++++++"<<setw(10)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(8)<<"+"<<setw(41)<<"+"<<setw(10)<<"*"
@@ -715,25 +783,29 @@ void seeKey(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		clear();
 		menuOpciones();
 		
 	} else if (verClave == "n" || verClave == "N" || verClave == "no" || verClave == "NO" || verClave == "nO" || verClave == "No"){
+		key = atoi(password);
 		cout<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		key = atoi(password);
-		clear();
 		menuOpciones();
 			
 	} else{
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(48)<<"ERROR :O | Ingrese una opcion valida."<<setw(11)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(47)<<"ERROR :O | Ingrese una opcion valida."<<setw(12)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		seeKey();
 	}
 }
@@ -856,9 +928,18 @@ void clearRetirarDos(){
 //Inicio Funcion clearTransferencias()
 void clearTransferencias(){
 	system("cls");
-	cout<<"\t\t\t\tBienvenido a Tu Banco Virtual"<<endl
-	<<"\n\n\n\t\t\t***Transferencia***"<<endl
-	<<"\n\t\t***Si desea cancelar la transaccion, presione la tecla 'Esc' en cualquier momento***"<<endl<<endl;
+	cout<<"\n"<<setw(85)<<"************************************************************"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"BIENVENIDO A TU BANCO VIRTUAL"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(40)<<"|--> TRANSFERENCIA <--|"<<setw(19)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<">>|Si desea cancelar el procedimiento,"<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(52)<<"|presione la tecla 'Esc' en cualquier momento"<<setw(7)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(85)<<"************************************************************";
 }
 //Final Funcion clearTransferencias()
 
@@ -867,6 +948,8 @@ void clearTransferencias(){
 
 //Inicio Funcion ingresarDinero()
 void ingresarDinero(){
+	
+	clearIngresar(); 
 	
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(34)<<"-Cuanto dinero desea ingresar?"<<setw(25)<<"*"
@@ -877,10 +960,16 @@ void ingresarDinero(){
 	if(e == 0){
 		clearIngresar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(44)<<"ERROR :O |El campo esta vacio,"<<setw(15)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(41)<<"|ingrese un valor."<<setw(18)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(52)<<"ERROR :O El campo esta vacio, ingrese un valor."<<setw(7)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		ingresarDinero();
 	}
 	
@@ -890,19 +979,33 @@ void ingresarDinero(){
 	if(dineroIngreso > 1000000){
 		clearIngresar();		
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(40)<<"ERROR :O |Lo maximo permitido"<<setw(19)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(48)<<"|para ingresar es $1.000.000"<<setw(11)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(39)<<"ERROR :O |Lo maximo permitido"<<setw(20)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(47)<<"|para ingresar es $1.000.000"<<setw(12)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		ingresarDinero();
 	
 	} else if (dineroIngreso > 0 && dineroIngreso < 20000){
 		clearIngresar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(41)<<"ERROR :O |Lo minimo permitido"<<setw(18)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para ingresar es $20.000"<<setw(13)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(40)<<"ERROR :O |Lo minimo permitido"<<setw(19)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(45)<<"|para ingresar es $20.000"<<setw(14)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		ingresarDinero();
 			
 	} else if(dineroIngreso > 19999 && dineroIngreso < 1000001){
@@ -911,15 +1014,21 @@ void ingresarDinero(){
 			<<"\n"<<setw(85)<<"------------------------------------------------------------"
 			<<"\n"<<setw(55)<<":V";
 		limiteCero();
-		clearIngresar();
 		validarClaveIngresoDinero();
 		
 	} else{
 		clearIngresar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(51)<<"ERROR :O | El valor ingresado no es valido."<<setw(8)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(50)<<"ERROR :O | El valor ingresado no es valido."<<setw(9)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		ingresarDinero();
 	}
 }
@@ -929,15 +1038,17 @@ void ingresarDinero(){
 
 
 //Inicio Funcion validarClaveIngresoDinero()
-void validarClaveIngresoDinero(){ 
+void validarClaveIngresoDinero(){
+	
+	clearIngresar();
 	
 	//Iniio validarClaveGlobal();
 	int i;
 	
-	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-	cout<<"\n"<<setw(26)<<"*"<<setw(39)<<"-Ingrese su clave, tiene 3 intentos"<<setw(20)<<"*";
-	cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-	cout<<"\n"<<setw(35)<<"-> ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(39)<<"-Ingrese su clave, tiene 3 intentos"<<setw(20)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"-> ";
 	
 	while(caracter = getch()){ //No mostrar cuando escribe
 		if(caracter == 13){ //tecla de enter
@@ -968,9 +1079,16 @@ void validarClaveIngresoDinero(){
 	if(j == 0){
 		clearIngresar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(50)<<"ERROR :O | No ha ingresado ningun numero."<<setw(9)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(49)<<"ERROR :O | No ha ingresado ningun numero."<<setw(10)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		validarClaveIngresoDinero();
 	}
 	
@@ -978,13 +1096,19 @@ void validarClaveIngresoDinero(){
 	
 		while(l < 3){
 			clearIngresar();
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cerr<<"\n"<<setw(26)<<"*"<<setw(46)<<"ERROR :O | La clave no es valida."<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(37)<<">> Numero de intentos: "<<l<<" de 3 <<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O | La clave no es valida."<<setw(14)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<l<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			limiteCero();
 			l++;
 			validarClaveIngresoDinero();
 		}
@@ -992,22 +1116,21 @@ void validarClaveIngresoDinero(){
 		if(l > 2){
 			clearIngresarDos();
 			bloqueoIngreso = true;
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(36)<<">>> Numero de intentos: "<<l<<" de 3 <<<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"|para realizar el ingreso de su dinero"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<l<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|para realizar el ingreso de su dinero"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 	} else {
@@ -1017,35 +1140,40 @@ void validarClaveIngresoDinero(){
 		if(valorIngreso == key){
 			clearIngresarDos();
 			dineroTotal += dineroIngreso;
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(45)<<">>> INGRESO DE DINERO EXITOSO <<<"<<setw(14)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(27)<<">>Ingreso realizado por: $"<<dineroIngreso<<setw(2)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(8)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(45)<<">>> INGRESO DE DINERO EXITOSO <<<"<<setw(14)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(27)<<">>Ingreso realizado por: $"<<dineroIngreso<<setw(2)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(8)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 		
 		while(l < 3){
 			clearIngresar();
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cerr<<"\n"<<setw(26)<<"*"<<setw(46)<<"ERROR :O | La clave no es valida."<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(37)<<">> Numero de intentos: "<<l<<" de 3 <<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O | La clave no es valida."<<setw(14)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<l<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			limiteCero();
 			l++;
 			validarClaveIngresoDinero();
 		}
@@ -1053,22 +1181,21 @@ void validarClaveIngresoDinero(){
 		if(l > 2){
 			clearIngresarDos();
 			bloqueoIngreso = true;
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(36)<<">>> Numero de intentos: "<<l<<" de 3 <<<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"|para realizar el ingreso de su dinero"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<l<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|para realizar el ingreso de su dinero"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 	}
@@ -1081,19 +1208,53 @@ void validarClaveIngresoDinero(){
 //Inicio Funcion retirarDinero()
 void retirarDinero(){
 	
+	clearRetirar(); 
+	
 	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 		<<"\n"<<setw(26)<<"*"<<setw(34)<<"-Cuanto dinero desea retirar?"<<setw(25)<<"*"
 		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
 		<<"\n"<<setw(35)<<"$ ";
-	escape();
+	
+	int i;
+	char caracter;
+	
+	while(caracter = getch()){ 
+		if(caracter == 13){
+			valor[i] = '\0';
+			break;
+
+		} else if(caracter == 27){
+			clear();
+			menuOpciones();
+			
+		} else if(caracter == 8){
+			if(i > 0){
+				i--;
+				cout<<"\b \b";
+			}
+		} else{
+			if(i < longiRetiro){
+				cout<<caracter;
+				valor[i] = caracter;
+				i++;
+			}
+		}
+	}
+	e = i;
 	
 	if(e == 0){
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(44)<<"ERROR :O |El campo esta vacio,"<<setw(15)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(41)<<"|ingrese un valor."<<setw(18)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(52)<<"ERROR :O El campo esta vacio, ingrese un valor."<<setw(7)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		retirarDinero();
 	}
 			
@@ -1102,31 +1263,51 @@ void retirarDinero(){
 	if(dineroRetiro > dineroTotal){
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O | Fondos inuficientes."<<setw(14)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(44)<<"ERROR :O | Fondos inuficientes."<<setw(15)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		retirarDinero();
 	
 	} else if (dineroRetiro > 500000){
 		clearRetirar();		
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(46)<<"ERROR :O |Lo maximo permitido por"<<setw(13)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(47)<<"|cada retiro son $500.000"<<setw(12)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O |Lo maximo permitido por"<<setw(14)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(46)<<"|cada retiro son $500.000"<<setw(13)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		retirarDinero();
 		
 	}else if(dineroRetiro > 0 && dineroRetiro < 20000){
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(42)<<"ERROR :O |Lo minimo permitido"<<setw(17)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para retirar es $20.000"<<setw(13)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(41)<<"ERROR :O |Lo minimo permitido"<<setw(18)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(45)<<"|para retirar es $20.000"<<setw(14)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		retirarDinero();
 	
-	} else if (dineroRetiro > 19999 && dineroRetiro <= dineroTotal){
-		clearRetirar();	
+	} else if (dineroRetiro > 19999 && dineroRetiro <= dineroTotal){	
 		validarClaveRetiroDinero();	
 			
 	} else {
@@ -1134,7 +1315,14 @@ void retirarDinero(){
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
 		cerr<<"\n"<<setw(26)<<"*"<<setw(51)<<"ERROR :O | El valor ingresado no es valido."<<setw(8)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		retirarDinero();
 	}
 }
@@ -1146,14 +1334,15 @@ void retirarDinero(){
 //Inicio Funcion validarClaveRetiroDinero()
 void validarClaveRetiroDinero(){
 	
+	clearRetirar();
 	
 	//Inicio validarClaveGlobal();
 	int i;
 	
-	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-	cout<<"\n"<<setw(26)<<"*"<<setw(39)<<"-Ingrese su clave, tiene 3 intentos"<<setw(20)<<"*";
-	cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-	cout<<"\n"<<setw(35)<<"-> ";
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(39)<<"-Ingrese su clave, tiene 3 intentos"<<setw(20)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"-> ";
 	
 	while(caracter = getch()){ //No mostrar cuando escribe
 		if(caracter == 13){ //tecla de enter
@@ -1184,9 +1373,16 @@ void validarClaveRetiroDinero(){
 	if(j == 0){
 		clearRetirar();
 		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
-			<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-		cerr<<"\n"<<setw(26)<<"*"<<setw(50)<<"ERROR :O | No ha ingresado ningun numero."<<setw(9)<<"*";
-		cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(49)<<"ERROR :O | No ha ingresado ningun numero."<<setw(10)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		validarClaveRetiroDinero();
 	}
 	
@@ -1194,13 +1390,19 @@ void validarClaveRetiroDinero(){
 	
 		while(k < 3){
 			clearRetirar();
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cerr<<"\n"<<setw(26)<<"*"<<setw(46)<<"ERROR :O | La clave no es valida."<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(37)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O | La clave no es valida."<<setw(14)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			limiteCero();
 			k++;
 			validarClaveRetiroDinero();
 		}
@@ -1208,22 +1410,21 @@ void validarClaveRetiroDinero(){
 		if(k > 2){
 			clearRetirarDos();
 			bloqueoRetiro = true;
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(36)<<">>> Numero de intentos: "<<k<<" de 3 <<<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para realizar el retiro de su dinero"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para realizar el retiro de su dinero"<<setw(13)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 		
@@ -1234,35 +1435,40 @@ void validarClaveRetiroDinero(){
 		if(valorRetiro == key){
 			clearRetirarDos();
 			dineroTotal -= dineroRetiro;
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(45)<<">>> RETIRO DE DINERO EXITOSO <<<"<<setw(14)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(26)<<">>Retiro realizado por: $"<<dineroRetiro<<setw(3)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(8)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(45)<<">>> RETIRO DE DINERO EXITOSO <<<"<<setw(14)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(26)<<">>Retiro realizado por: $"<<dineroRetiro<<setw(3)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(21)<<">>Saldo en cuenta: $"<<dineroTotal<<setw(8)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(12)<<"+"<<setw(35)<<"+"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"++++++++++++++++++++++++++++++++++++"<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 		
 		while(k < 3){
 			clearRetirar();
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cerr<<"\n"<<setw(26)<<"*"<<setw(46)<<"ERROR :O | La clave no es valida."<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(56)<<"----------------------------------------------------"<<setw(3)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(37)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+			cerr<<"\n"<<setw(26)<<"*"<<setw(45)<<"ERROR :O | La clave no es valida."<<setw(14)<<"*";
+			cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
+				<<"\n"<<setw(55)<<":V";
+			limiteCero();
 			k++;
 			validarClaveRetiroDinero();
 		}
@@ -1270,22 +1476,21 @@ void validarClaveRetiroDinero(){
 		if(k > 2){
 			clearRetirarDos();
 			bloqueoRetiro = true;
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(36)<<">>> Numero de intentos: "<<k<<" de 3 <<<"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para realizar el retiro de su dinero"<<setw(13)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*";
-			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*";
-			cout<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-			cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(35)<<">> Numero de intentos: "<<k<<" de 3 <<"<<setw(15)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(50)<<"|Ha superado el numero mayor de intentos,"<<setw(9)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(46)<<"|para realizar el retiro de su dinero"<<setw(13)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(42)<<"|comuniquese al 01-8000-555-666 o"<<setw(17)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(47)<<"|acerquese a una de nuestras oficinas."<<setw(12)<<"*"
+				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
 				<<"\n"<<setw(85)<<"------------------------------------------------------------"
 				<<"\n"<<setw(55)<<":V";
 			limiteCero();
-			clear();
 			menuOpciones();
 		}
 	}
@@ -1298,21 +1503,81 @@ void validarClaveRetiroDinero(){
 //Inicio Funcion transferencias()
 void transferencias(){
 	
-	int opcionTransferencia;
+	clearTransferencias();
 	
-	cout<<"\n\t//Por favor indique a donde quiere transferir el dinero.//"<<endl
-		<<"\n\t\t\t1. A Cuenta de Ahorros Tu banco virtual."<<endl
-		<<"\n\t\t\t2. A Cuenta Corriente Tu banco virtual."<<endl
-		<<"\n\t\t\t3. A otro Banco."<<endl
-		<<"\n\t-Elija una opcion: ";
-	cin>>opcionTransferencia;
-	cin.ignore();
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(57)<<">>Por favor indique a donde quiere transferir el dinero."<<setw(2)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(44)<<"1. A Cuenta de Ahorros Tu banco virtual."<<setw(15)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(43)<<"2. A Cuenta Corriente Tu banco virtual."<<setw(16)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(20)<<"3. A otro Banco."<<setw(39)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(22)<<"-Elija una opcion:"<<setw(37)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"-> ";
+	escape();
+	
+	if(e == 0){
+		clearTransferencias();
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(52)<<"ERROR :O El campo esta vacio, ingrese un valor."<<setw(7)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		transferencias();
+		
+	}
+	
+	int opcionTransferencia = atoi(valor);
 	
 	switch(opcionTransferencia){
-		case 1: clearTransferencias(); cuentaAhorros();
-		case 2: clearTransferencias(); cuentaCorriente();
-		case 3: clearTransferencias(); otrosBancos();
-		default: clearTransferencias(); cout<<"\n\t\tLa opcion no es correcta, intentelo de nuevo."<<endl; transferencias();
+		case 1:
+		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		cuentaAhorros();
+		
+		case 2:
+		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		clearTransferencias();
+		cuentaCorriente();
+		
+		case 3:
+		cout<<"\n\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		clearTransferencias();
+		otrosBancos();
+		
+		default: 
+		clearTransferencias();
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(46)<<"ERROR :O |La opcion no es correcta,"<<setw(13)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(40)<<"|intentelo de nuevo."<<setw(19)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
+		transferencias();
 	}
 }
 //Final Funcion transferencias()
@@ -1320,14 +1585,36 @@ void transferencias(){
 
 
 
+//Inicio Funcion cuentaAhorros()
+void cuentaAhorros(){
+	
+	validarNumeroCuenta();
+	clearTransferencias();
+	validarCantidadTransferir();
+	
+	validarClaveTransferenciaDinero();
+}
+//Final Funcion cuentaAhorros()
+
+
+
+
 //Inicio Funcion validarNumeroCuenta()
 void validarNumeroCuenta(){
 	
+	clearTransferencias();
+	
+	cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(45)<<">>>|Por favor complete todos los datos"<<setw(14)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(45)<<"|para continuar con la transaccion."<<setw(14)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+		<<"\n"<<setw(26)<<"*"<<setw(33)<<"-Numero de Cuenta de Ahorros:"<<setw(26)<<"*"
+		<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+		<<"\n"<<setw(35)<<"-> ";
+	
+	
 	int i;
 	char caracter;
-	
-	cout<<"\n\t\tPor favor complete todos los datos para continuar con la transaccion."<<endl
-		<<"\n\t- Numero de Cuenta de Ahorros: ";
 	
 	while(caracter = getch()){ 
 		if(caracter == 13){
@@ -1354,15 +1641,38 @@ void validarNumeroCuenta(){
 	
 	if(i == 0){
 		clearTransferencias();
-		cerr<<"\n\n\t\tERROR // El campo esta vacio, ingrese un valor."<<endl;
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(52)<<"ERROR :O El campo esta vacio, ingrese un valor."<<setw(7)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		validarNumeroCuenta();
 	}
 	
 	if(strlen(numeroCuenta) < longiNumeroCuenta){
 		clearTransferencias();
-		cerr<<"\n\n\t\tERROR // El numero ingresado no es valido."<<endl;
+		cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*";
+		cerr<<"\n"<<setw(26)<<"*"<<setw(50)<<"ERROR :O |El numero ingresado no es valido."<<setw(9)<<"*";
+		cout<<"\n"<<setw(26)<<"*"<<setw(55)<<"----------------------------------------------------"<<setw(4)<<"*"
+			<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
+			<<"\n"<<setw(28)<<"***"<<setw(57)<<"***"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(78)<<">>>> Presione la tecla enter para continuar <<<<"
+			<<"\n"<<setw(85)<<"------------------------------------------------------------"
+			<<"\n"<<setw(55)<<":V";
+		limiteCero();
 		validarNumeroCuenta();	
-	} 
+		
+	} else if(strlen(numeroCuenta) == longiNumeroCuenta){
+		validarCantidadTransferir();
+	}	
 }
 //Final Funcion validarNumeroCuenta()
 
@@ -1472,16 +1782,7 @@ void validarClaveTransferenciaDinero(){
 
 
 
-//Inicio Funcion cuentaAhorros()
-void cuentaAhorros(){
-	
-	validarNumeroCuenta();
-	clearTransferencias();
-	validarCantidadTransferir();
-	
-	validarClaveTransferenciaDinero();
-}
-//Final Funcion cuentaAhorros()
+
 
 
 
