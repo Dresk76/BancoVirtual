@@ -41,7 +41,6 @@ bool bloqueoIngreso = false, bloqueoRetiro = false, bloqueoTransaccion = false;
 
 char documento[longiCedula], caracter, password[longitud], valor[longiEscape], numeroCuenta[longiNumeroCuenta];
 
-
 void clear();
 void continuar();
 void cambioDocumento();
@@ -296,7 +295,7 @@ void preguntaRegistrarCorreo(){
 
 
 //Inicio Funcion cambioCorreo()
-void cambioCorreo(){
+	void cambioCorreo(){
 	
 	clear();
 	
@@ -333,7 +332,6 @@ void cambioCorreo(){
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 				<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
 				<<"\n"<<setw(28)<<"***"<<setw(57)<<"***";
-				
 			continuar();
 						
 		} else if(b == false){

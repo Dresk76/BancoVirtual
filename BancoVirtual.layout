@@ -4,9 +4,15 @@ Focused=0
 [Editor_0]
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=1
-CursorRow=1643
-TopLine=363
+<<<<<<< HEAD
+CursorCol=11
+CursorRow=1796
+TopLine=1749
+=======
+CursorCol=10
+CursorRow=1747
+TopLine=1759
+>>>>>>> cc7c3f5795803929629042dbad5060b3d9093589
 =======
 CursorCol=69
 CursorRow=1528
