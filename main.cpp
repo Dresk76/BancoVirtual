@@ -42,7 +42,6 @@ bool bloqueoIngreso = false, bloqueoRetiro = false, bloqueoTransaccion = false;
 char documento[longiCedula], caracter, password[longitud], valor[longiEscape], numeroCuenta[longiNumeroCuenta];
 
 
-
 void clear();
 void continuar();
 void cambioDocumento();
