@@ -3,9 +3,15 @@ Order=0
 Focused=0
 [Editor_0]
 <<<<<<< HEAD
-CursorCol=25
-CursorRow=12
-TopLine=28
+<<<<<<< HEAD
+CursorCol=10
+CursorRow=1747
+TopLine=1759
+=======
+CursorCol=69
+CursorRow=1528
+TopLine=1516
+>>>>>>> pruebas
 =======
 CursorCol=1
 CursorRow=1043
