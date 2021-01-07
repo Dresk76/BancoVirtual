@@ -1672,6 +1672,7 @@ void otrosBancos(){
 			bancos();
 			
 		case 2:
+			cout<<"\n";
 			continuar();
 			clearTransferenciasDos();
 			cout<<"\n"<<setw(26)<<"*"<<setw(59)<<"*"
